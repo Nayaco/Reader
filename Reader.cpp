@@ -39,13 +39,36 @@ class Ant{
         static void Showme(string A);  
     private:
         int Selfcheck();
+        int[] Getnext(string A,string B){
+            
+        }
         int KMP(string A,string B);
 };
 void Ant::Showme(string A){
     sWrite(A);
 }
+int[] Ant::Getnext(string A){
+    int Index[] = new int[A.length()+1];
+    memset(Index,0,sizeof(Index));
+    Index[0] = Index[1] = 0;
+    int j = 0;
+    for(int i = 0; i < A.length(); i++){
+		j = Index[i];
+		while(j > 0 && A[i] == A[j])j = Index[j];
+		if(A[i] == A[j])j++;
+		Index[i+1]=j;
+	}
+    return Index;
+}
 int Ant::KMP(string A,string B){
-
+    int Index[] = Getnext(B);
+    int j = 0;
+    for(int i = 0; i < A.length(); i++){
+        while(j > 0 && A[i] != B[j])j = Index[j];
+        if(A[i] == B[j]){
+            
+        }
+    }
 }
 
 
