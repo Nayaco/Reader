@@ -14,7 +14,7 @@
 #include<string>
 #include<time.h>
 #include<Windows.h>
-
+//defines
 #define Read(x) scanf("%s",&x)
 #define Write(x) printf("%s",x)
 #define sRead(x) cin>>x
@@ -37,15 +37,8 @@ class Ant{
     }
     public:
         static void Showme(string A);  
-<<<<<<< HEAD
         static int* KMP(string A,string B);
         static int* Getnext(string A);
-=======
-    private:
-        int Selfcheck();
-        int* Getnext(string A);
-        int KMP(string A,string B);
->>>>>>> 888363591bd0d4ffc7c9f0ba4b36f9a76d5fd6f2
 };
 void Ant::Showme(string A){
     sWrite(A);
@@ -54,22 +47,15 @@ int* Ant::Getnext(string A){
     int *Index = new int[A.length()+1];
     Index[0] = Index[1] = 0;
     int j = 0;
-<<<<<<< HEAD
     for(int i = 1; i < A.length(); i++){
         j = Index[i];
 		while(j > 0 && A[i] != A[j])j = Index[j];
-=======
-    for(int i = 0; i < A.length(); i++){
-		j = Index[i];
-		while(j > 0 && A[i] == A[j])j = Index[j];
->>>>>>> 888363591bd0d4ffc7c9f0ba4b36f9a76d5fd6f2
 		if(A[i] == A[j])j++;
             else j = 0;
 		Index[i+1]=j;
 	}
     return Index;
 }
-<<<<<<< HEAD
 int* Ant::KMP(string A,string B){
     int *Index = Getnext(B);
     int *Match = new int[A.length()];
@@ -86,16 +72,6 @@ int* Ant::KMP(string A,string B){
         }
     }
     return Isfound?Match:nullptr;
-=======
-int Ant::KMP(string A,string B){
-    int *Index = Getnext(B);
-    int j = 0;
-    for(int i = 0; i < A.length(); i++){
-        while(j > 0 && A[i] != B[j])j = Index[j];
-        if(A[i] == B[j])j++;
-        if(j == B.length())sWrite(i-B.length());
-    }
->>>>>>> 888363591bd0d4ffc7c9f0ba4b36f9a76d5fd6f2
 }
 
 
