@@ -35,10 +35,14 @@ using namespace std;
 class Ant{
     Ant(){
     }
+    ~Ant(){
+    }
     public:
         static void Showme(string A);  
         static int* KMP(string A,string B);
         static int* Getnext(string A);
+    private:
+        void Selfcheck();
 };
 void Ant::Showme(string A){
     sWrite(A);
@@ -74,4 +78,18 @@ int* Ant::KMP(string A,string B){
     return Isfound?Match:nullptr;
 }
 
+class Ape{
+    public:
+        //string *Str;
+        Ape(int Num){
+            //Str = new string[Num];
+        }
+        ~Ape(){
+            sWrite("End of Ape");
+        }
+        static int* Find(string Origin,int X){
+            //return Ant::KMP(str[X]);
+        }
+
+};
 
