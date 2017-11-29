@@ -90,6 +90,5 @@ class Ape{
         static int* Find(string Origin,int X){
             //return Ant::KMP(str[X]);
         }
-
 };
 

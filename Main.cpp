@@ -15,7 +15,6 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     wc.style = CS_HREDRAW|CS_VREDRAW;  
     // 注册窗口类  
     RegisterClass(&wc);  
-  
     // 创建窗口  
     HWND hwnd = CreateWindowEx(
         0,                              // Optional window styles.
