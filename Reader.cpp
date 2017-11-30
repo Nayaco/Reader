@@ -22,14 +22,12 @@ int* Ant::KMP(string A,string B){
     int *Index = Getnext(B);
     int *Match = new int[A.length()];
     memset(Match,0,sizeof(Match));
-    //for(int i = 0; i < B.length(); i++)sWrite(Index[i]);
     int j = 0,Isfound = 0;
     for(int i = 0; i < A.length(); i++){
         while(j > 0 && A[i] != B[j])j = Index[j];
         if(A[i] == B[j])j++;
         if(j == B.length()){
             Match[++Isfound] = i - B.length() + 1;
-            //sWrite(i-B.length()+1);
             j = Index[j];
         }
     }
