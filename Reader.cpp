@@ -37,3 +37,11 @@ int* Ant::KMP(string A,string B){
 int* Ape::Find(string origin, int x){
     return nullptr;
 }
+
+Bean::Bean(XMLDocument *XML){
+    this->HTML = &XML;
+}
+
+void Bean::htmlRead(){
+    
+}

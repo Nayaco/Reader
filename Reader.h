@@ -16,6 +16,8 @@
 #include<bitset>
 #include<string>
 #include<time.h>
+#include "tinyxml.h"
+#include "tinyxml.cpp"
 
 //defines
 #define stdRead(x) scanf("%s",&x)
@@ -57,7 +59,9 @@ class Ape{
 //The html bean
 class Bean{
     public:
-        Bean();
+        XMLDocument HTML;
+        Bean(XMLDocument *XML);
         ~Bean();
+        void htmlRead();
 };
 #endif
