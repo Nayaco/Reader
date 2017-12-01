@@ -1,5 +1,6 @@
 #ifndef READER_H
 #define READER_H
+
 #pragma G++ diagnostic error "-std=c++11"
 #include<cstdio>
 #include<cstdlib>
@@ -17,8 +18,8 @@
 #include<time.h>
 
 //defines
-#define Read(x) scanf("%s",&x)
-#define Write(x) printf("%s",x)
+#define stdRead(x) scanf("%s",&x)
+#define stdWrite(x) printf("%s",x)
 #define sRead(x) cin>>x
 #define sWrite(x) cout<<x<<endl
 #define RPoint_to(x) freopen(x,"r",stdin)
@@ -34,28 +35,29 @@
 #define Insert main()
 
 using namespace std;
-
+//KMPant
 class Ant{
-    Ant(){
-    }
-    ~Ant(){
-    }
     public:
+        Ant(){}
+        ~Ant(){}
         static void Showme(string A);  
         static int* KMP(string A,string B);
         static int* Getnext(string A);
     private:
         void Selfcheck();
 };
+//The string ape
 class Ape{
     public:
-        //string *Str;
-        Ape(int Num){
-            //Str = new string[Num];
-        }
-        ~Ape(){
-            sWrite("End of Ape");
-        }
+        string ApeStr;
+        Ape(int Num);
+        ~Ape();
         static int* Find(string Origin,int X);
+};
+//The html bean
+class Bean{
+    public:
+        Bean();
+        ~Bean();
 };
 #endif
