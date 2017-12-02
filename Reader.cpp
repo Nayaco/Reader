@@ -1,4 +1,4 @@
-#include<Reader.h>
+#include "Reader.h"
 
 void Ant::Showme(string A){
     sWrite(A);
@@ -38,10 +38,23 @@ int* Ape::Find(string origin, int x){
     return nullptr;
 }
 
-Bean::Bean(XMLDocument *XML){
-    this->HTML = &XML;
+Bean::Bean(XMLDocument XML){
+    HTML = XML;
 }
 
 void Bean::htmlRead(){
-    
+}
+
+LOG::LOG(string Logname,int index){
+    logindex = index;
+    try{
+        CreateoF(logout,LongName);
+    }
+    catch(exception& err){
+        sWrite(err.what());
+    }
+}
+LOG::~LOG(){
+    Close(logout);
+    sWrite("LOG FINISHED");
 }

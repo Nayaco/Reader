@@ -11,19 +11,25 @@
 #include<vector>
 #include<stack>
 #include<iostream>
+#include<fstream>
 #include<algorithm>
 #include<functional>
 #include<bitset>
 #include<string>
 #include<time.h>
-#include "tinyxml.h"
-#include "tinyxml.cpp"
+#include<Windows.h>
+#include "tinyxml2.h"
+#include "tinyxml2.cpp"
+#include "General_Func.cpp"
 
 //defines
-#define stdRead(x) scanf("%s",&x)
-#define stdWrite(x) printf("%s",x)
-#define sRead(x) cin>>x
-#define sWrite(x) cout<<x<<endl
+#define CreateoF(x,y) x.open(y,ios::out,0)
+#define CreateiF(x,y) x.open(y,ios::in,0)
+#define Close(x) x.close();
+#define stdRead(format,x) scanf(format,&x)
+#define stdWrite(format,...) printf(format,__VA_ARGS__)
+#define sRead(x,...) x>>__VA_ARGS__
+#define sWrite(x,...) x<<__VA_ARGS__<<endl
 #define RPoint_to(x) freopen(x,"r",stdin)
 #define WPoint_to(x) freopen(x,"w",stdout)
 #define Closer fclose(stdin)
@@ -37,7 +43,9 @@
 #define Insert main()
 
 using namespace std;
+using namespace tinyxml2;
 //KMPant
+
 class Ant{
     public:
         Ant(){}
@@ -60,8 +68,25 @@ class Ape{
 class Bean{
     public:
         XMLDocument HTML;
-        Bean(XMLDocument *XML);
+        Bean();
         ~Bean();
-        void htmlRead();
+        void htmlRead();//The outer port
+    private:
+//Element adder
+        bool addElement(string Eledata);
 };
+
+class LOG{
+    public:
+        LOG(string Logname,int index);
+        ~LOG();
+        void Writelog(string Logdata);
+        int Status();
+        void SendErr();
+        static void login();         
+    private:
+        fstream logout;
+        int logindex;
+};
+
 #endif
