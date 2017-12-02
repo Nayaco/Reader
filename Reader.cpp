@@ -1,9 +1,5 @@
 #include "Reader.h"
 
-void Ant::Showme(string A){
-    sWrite(A);
-}
-
 int* Ant::Getnext(string A){
     int *Index = new int[A.length()+1];
     Index[0] = Index[1] = 0;

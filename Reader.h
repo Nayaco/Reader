@@ -44,13 +44,12 @@
 
 using namespace std;
 using namespace tinyxml2;
-//KMPant
 
+//KMPant
 class Ant{
     public:
         Ant(){}
         ~Ant(){}
-        static void Showme(string A);  
         static int* KMP(string A,string B);
         static int* Getnext(string A);
     private:
