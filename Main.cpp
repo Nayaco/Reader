@@ -1,24 +1,31 @@
+/*
+*This is a Win32 application,however it's unfinished it works well.
+    *It serve a "reader" headfile, which include a html reader(UF)
+    *In "reader.h" it serves the Win32API headfile, so there's no ne 
+    *ed to import the "Windows.h"
+*Edition : Alpha 0.01a
+*Original code by NayacoZhang(QSCGD) (https://github.com/Nayaco) 
+*/
 #include "Reader.h"
-#include "Windows.h"
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);  
    
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)  
 {  
-    //WCHAR* cls_Name = "My Class";  
-    // 设计窗口类  
+    LPCSTR cls_Name = "My Class";  
+    //It is the window disigner
     WNDCLASS wc = {};  
     wc.hbrBackground = (HBRUSH)(COLOR_WINDOWFRAME);  
     wc.lpfnWndProc = WindowProc;  
-    wc.lpszClassName = "My Class";  
+    wc.lpszClassName = cls_Name;
     wc.hInstance = hInstance;
     wc.style = CS_HREDRAW|CS_VREDRAW;  
-    // 注册窗口类  
+    //register  
     RegisterClass(&wc);  
-    // 创建窗口  
+    //creator  
     HWND hwnd = CreateWindowEx(
         0,                              // Optional window styles.
-        "My Class",                     // Window class
+        cls_Name,                     // Window class
         "Learn to Program Windows",    // Window text
         WS_OVERLAPPEDWINDOW,            // Window style
         // Size and position
@@ -31,10 +38,10 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     if(hwnd == NULL)return 0;    
     ShowWindow(hwnd, SW_SHOW);  
   
-    // 更新窗口  
+    //renewer  
     UpdateWindow(hwnd);  
   
-    // 消息循环  
+    //message loop
     MSG msg;  
     while(GetMessage(&msg, NULL, 0, 0))  
     {  
@@ -43,16 +50,19 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     }  
     return 0;  
 }  
-// 在WinMain后实现  
+//It was decleared  
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){  
     switch(uMsg){
         case WM_PAINT: {PAINTSTRUCT ps;  
-            BeginPaint(hwnd, &ps);  
-            DrawText(ps.hdc, "Hello world",wcslen(L"Hello world"), &(ps.rcPaint), DT_CENTER);  
-            EndPaint(hwnd, &ps);
+                sWrite(cout,"Paint begins");
+                BeginPaint(hwnd, &ps);  
+                DrawText(ps.hdc, "Hello world",wcslen(L"Hello world"), &(ps.rcPaint), DT_CENTER);  
+                EndPaint(hwnd, &ps);
+                sWrite(cout,"Paint finished");
             }
             return 0;
         case WM_DESTROY:
+            sWrite(cout,"Window Destroyed");
             PostQuitMessage(0);
             return 0;
         default: return DefWindowProc(hwnd, uMsg, wParam, lParam);
