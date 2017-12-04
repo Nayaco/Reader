@@ -1,5 +1,5 @@
 #include "Reader.h"
-#include "Windows.h"
+
 int main(){
     int a = 2,b = 3;
     Temp_F<int>::swap(a,b);
