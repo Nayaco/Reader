@@ -51,15 +51,18 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     return 0;  
 }  
 //It was decleared  
+void DRAWING(HWND hwnd){
+    PAINTSTRUCT ps;  
+    sWrite(cout,"Paint begins");
+    BeginPaint(hwnd, &ps);  
+    DrawText(ps.hdc, "Hello world",wcslen(L"Hello world"), &(ps.rcPaint), DT_CENTER);  
+    EndPaint(hwnd, &ps);
+    sWrite(cout,"Paint finished");
+}
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){  
     switch(uMsg){
-        case WM_PAINT: {PAINTSTRUCT ps;  
-                sWrite(cout,"Paint begins");
-                BeginPaint(hwnd, &ps);  
-                DrawText(ps.hdc, "Hello world",wcslen(L"Hello world"), &(ps.rcPaint), DT_CENTER);  
-                EndPaint(hwnd, &ps);
-                sWrite(cout,"Paint finished");
-            }
+        case WM_PAINT:
+            DRAWING();
             return 0;
         case WM_DESTROY:
             sWrite(cout,"Window Destroyed");
